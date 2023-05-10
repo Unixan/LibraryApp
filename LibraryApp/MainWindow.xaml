@@ -6,8 +6,11 @@
         xmlns:local="clr-namespace:LibraryApp"
         mc:Ignorable="d"
         Title="MainWindow" Height="400" Width="300" 
+        WindowStyle="None"
         ResizeMode="CanMinimize" 
+        MouseDown="MainWindow_OnMouseDown"
         WindowStartupLocation="CenterScreen">
+        
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
@@ -26,6 +29,7 @@
             <Button Content="Bøker" Click="ButtonBase_OnClick"/>
             <Button Content="Brukere"/>
             <Button Content="Lånekort"/>
+            <Button Content="Avslutt" Click="ButtonQuit_OnClick"/>
         </StackPanel>
     </Grid>
 </Window>

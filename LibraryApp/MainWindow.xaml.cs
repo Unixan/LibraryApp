@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Input;
 using LibraryApp.View;
 
 namespace LibraryApp
@@ -16,6 +17,19 @@ namespace LibraryApp
             var booksWindow = new Books(this);
             booksWindow.ShowDialog();
 
+        }
+
+        private void ButtonQuit_OnClick(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void MainWindow_OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
         }
     }
 }
