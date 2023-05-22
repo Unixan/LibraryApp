@@ -17,11 +17,7 @@ public class Library
         Books.Add(book);
     }
 
-    public object ShortGetDetails(int index)
-    {
-        return Books[index].GetBookShortDetails();
-    }
-
+    
     public Book GetBook(int index)
     {
         return Books[index];

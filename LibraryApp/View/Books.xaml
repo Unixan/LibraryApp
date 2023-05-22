@@ -24,11 +24,15 @@
         <StackPanel VerticalAlignment="Top" Grid.Row="2">
         <Button Content="Legg til bok"/>
         <Button Content="Fjern bok"/>
-        <Button Content="Detaljer"/>
-        <Button Content="Tilbake" Click="ButtonBase_OnClick"/>
+            <Button Content="Detaljer" Click="ButtonDetails_OnClick"/>
+        <Button Content="Tilbake" Click="ButtonClose_OnClick"/>
+        <Label Content="{Binding SelectedItem}"/>
         </StackPanel>
         <ScrollViewer Grid.Row="2" Grid.Column="1" >
-            <ListView x:Name="BookList">
+            <ListView x:Name="BookList" 
+                      Width="430" 
+                      SelectionMode="Single"
+                      SelectedItem="{Binding SelectedItem}">
 
             </ListView>
         </ScrollViewer>

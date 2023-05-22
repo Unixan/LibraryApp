@@ -1,26 +1,28 @@
-﻿using System.Windows;
+﻿using System;
+using System.Security.Cryptography;
+using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
 
 namespace LibraryApp.Model;
 
 public class BookListing : StackPanel
 {
-    public TextBlock Title { get; set; } = new TextBlock();
-    public TextBlock Author { get; set; } = new TextBlock();
-    public TextBlock Genre { get; set; } = new TextBlock();
-
+    public Book Book { get; private set; }
     public BookListing(Book book)
     {
-        Title.Text = book.Title;
-        Title.FontSize = 15;
-        Title.FontWeight = FontWeights.Bold;
-        Author.Text = "Forfatter: " + book.Author;
-        Author.FontWeight = FontWeights.Bold;
-        Genre.Text = "Kategori: " + book.Genre;
-        Genre.FontWeight = FontWeights.Bold;
-        Children.Add(Title);
-        Children.Add(Author);
-        Children.Add(Genre);
+        Book = book;
+        Width = 416;
+        Children.Add(new Textitem(book.Title, 16, true));
+        Children.Add(new Textitem("Forfatter: " + book.Author));
+        Children.Add(new Textitem("Sjanger: " + book.Genre));
+        HorizontalAlignment = HorizontalAlignment.Stretch;
+        Background = book.IsAvailable ? new SolidColorBrush(Colors.LightGreen) : new SolidColorBrush(Colors.LightCoral);
+    }
+    
+    public Book GetBook()
+    {
+        return Book;
     }
 }
