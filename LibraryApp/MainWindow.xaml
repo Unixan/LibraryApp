@@ -27,7 +27,7 @@
         
         <StackPanel Grid.Row="2" VerticalAlignment="Center">
             <Button Content="Bøker" Click="ButtonBase_OnClick"/>
-            <Button Content="Brukere"/>
+            <Button Content="Brukere" Click="ButtonUsers_OnClick"/>
             <Button Content="Lånekort"/>
             <Button Content="Avslutt" Click="ButtonQuit_OnClick"/>
         </StackPanel>

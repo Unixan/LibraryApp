@@ -7,10 +7,10 @@ using System.Windows.Media;
 
 namespace LibraryApp.Model;
 
-public class BookListing : StackPanel
+public class ItemListing : StackPanel
 {
     public Book Book { get; private set; }
-    public BookListing(Book book)
+    public ItemListing(Book book)
     {
         Book = book;
         Width = 416;
