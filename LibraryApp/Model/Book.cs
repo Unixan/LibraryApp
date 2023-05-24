@@ -7,7 +7,7 @@ public class Book
     public string Genre { get; set; }
     public string Description { get; set; }
     public bool IsAvailable => LoanedTo == null;
-    public Person? LoanedTo { get; set; }
+    public User? LoanedTo { get; set; }
 
     public Book(string title, string author, string genre, string description)
     {

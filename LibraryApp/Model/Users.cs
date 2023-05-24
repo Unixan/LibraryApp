@@ -10,4 +10,9 @@ public class Users
     {
         UsersList = new List<User>();
     }
+
+    public void AddUser(User user)
+    {
+        UsersList.Add(user);
+    }
 }

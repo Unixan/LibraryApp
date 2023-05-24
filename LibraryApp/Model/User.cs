@@ -5,16 +5,20 @@ namespace LibraryApp.Model;
 
 public class User
 {
-    private string _firstName;
-    private string _lastName;
-    private string _address;
-    private List<Book> _loanedBooks;
+    public string FirstName { get; private set; }
+    public string LastName { get; private set; }
+    public string Address { get; private set; }
+    public int Id { get; private set; }
 
-    public User(string firstName, string lastName, string address)
+    public bool HasLoanCard;
+    public List<Book> LoanedBooks { get; private set; }
+
+    public User(int id, string firstName, string lastName, string address)
     {
-        _firstName = firstName;
-        _lastName = lastName;
-        _address = address;
-        _loanedBooks = new List<Book>();
+        Id = id;
+        FirstName = firstName;
+        LastName = lastName;
+        Address = address;
+        LoanedBooks = new List<Book>();
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Linq;
+using System.Windows;
 using LibraryApp.Model;
 
 namespace LibraryApp.View
@@ -6,13 +7,17 @@ namespace LibraryApp.View
     public partial class UsersView : Window
     {
     private Library _library;
-    private Users _usersList;
+    public Users UsersList { get; private set; }
         public UsersView(Window mainWindow, Library library, Users usersList)
         {
             _library = library;
-            _usersList = usersList;
+            UsersList = usersList;
             Owner = mainWindow;
             InitializeComponent();
+            foreach (var user in UsersList.UsersList.Select(user => new UserListing(user)))
+            {
+                UserList.Items.Add(user);
+            }
         }
 
         private void ButtonBack_OnClick(object sender, RoutedEventArgs e)

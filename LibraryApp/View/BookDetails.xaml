@@ -48,8 +48,5 @@
         <Rectangle Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Stroke="Black"/>
         <Rectangle Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" Stroke="Black"/>
         <Rectangle Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2" Stroke="Black"/>
-        
-
-
     </Grid>
 </Window>

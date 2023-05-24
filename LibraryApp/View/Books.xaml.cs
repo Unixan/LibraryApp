@@ -18,7 +18,7 @@ namespace LibraryApp.View
             Owner = mainWindow;
             InitializeComponent();
         
-            foreach (var booklisting in _library.Books.Select(book => new ItemListing(book)))
+            foreach (var booklisting in _library.Books.Select(book => new BookListing(book)))
             {
                 BookList.Items.Add(booklisting);
             }
