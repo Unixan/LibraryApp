@@ -29,7 +29,7 @@
         </StackPanel>
         <ScrollViewer Grid.Row="2" Grid.Column="1" >
             <ListView x:Name="BookList" 
-                      Width="430" 
+                      Width="428" 
                       SelectionMode="Single"
                       />
         </ScrollViewer>

@@ -17,7 +17,7 @@
         <StackPanel>
         <Button Content="Legg til bruker"/>
         <Button Content="Slett bruker"/>
-        <Button Content="Detaljer"/>
+        <Button Content="Detaljer" Click="ButtonDetails_OnClick"/>
         <Button Content="Tilbake" Click="ButtonBack_OnClick"/>
         </StackPanel>
         <ScrollViewer Grid.Column="1" >

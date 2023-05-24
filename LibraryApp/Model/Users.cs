@@ -15,4 +15,9 @@ public class Users
     {
         UsersList.Add(user);
     }
+
+    public User GetUser(int index)
+    {
+        return UsersList[index];
+    }
 }

@@ -1,8 +1,5 @@
-﻿using System;
-using System.Security.Cryptography;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 using System.Windows.Media;
 
 namespace LibraryApp.Model;
@@ -13,7 +10,7 @@ public class BookListing : StackPanel
     public BookListing(Book book)
     {
         Book = book;
-        Width = 416;
+        Width = 413;
         Children.Add(new Textitem(book.Title, 16, true));
         Children.Add(new Textitem("Forfatter: " + book.Author));
         Children.Add(new Textitem("Sjanger: " + book.Genre));

@@ -22,9 +22,8 @@ namespace LibraryApp
             _usersList.AddUser(new User(1, "Ståle", "Johansen", "Båtveien 20"));
             _usersList.AddUser(new User(2, "Helene", "Persson", "Båtveien 20"));
             _usersList.AddUser(new User(3, "Eva", "Johansen", "Minørveien 26"));
-            
         }
-        
+
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
             var booksWindow = new Books(this, _library, _usersList);

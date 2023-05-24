@@ -1,27 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
+using LibraryApp.Model;
 
 namespace LibraryApp.View
 {
-    /// <summary>
-    /// Interaction logic for UserDetails.xaml
-    /// </summary>
     public partial class UserDetails : Window
     {
-        public UserDetails()
+    private User _user;
+        public UserDetails(Window owner, User user)
         {
+            _user = user;
+            Owner = owner;
             InitializeComponent();
+            Name.Text = user.GetFullName();
+            Address.Text = user.Address;
+            LoanCard.Text = _user.GetLoanCardStatus();
+            
+        }
+
+        private void PopulateLoanedBooksList()
+        {
+            foreach (var book in _user.LoanedBooks)
+            {
+
+            }
+        }
+
+        private void ButtonBack_OnClick(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void ButtonLoancard_OnClick(object sender, RoutedEventArgs e)
+        {
+            var LoanCardWindow = new LoanCardWindow(this, _user);
+            LoanCardWindow.ShowDialog();
         }
     }
 }
