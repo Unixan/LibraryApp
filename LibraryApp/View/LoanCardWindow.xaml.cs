@@ -8,12 +8,12 @@ namespace LibraryApp.View
         private User _user;
         public LoanCardWindow(Window owner, User user)
         {
-            _user = user;
-            Owner = owner;
+            //_user = user;
+            //Owner = owner;
             InitializeComponent();
-            Id.Content = _user.Id;
-            Name.Content = _user.GetFullName();
-            LoanCard.Content = _user.GetLoanCardStatus();
+            //Id.Content = _user.Id;
+            //Name.Content = _user.GetFullName();
+            //LoanCard.Content = _user.GetLoanCardStatus();
         }
 
         private void ButtonBack_OnClick(object sender, RoutedEventArgs e)

@@ -1,17 +1,18 @@
-﻿using LibraryApp.Model;
+﻿using System.Collections.ObjectModel;
+using LibraryApp.Model;
 using System.Linq;
 using System.Windows;
 
 namespace LibraryApp.View
 {
-    public partial class Books : Window
+    public partial class BooksWindow : Window
     {
         private Library _library;
         private Book _selectedBook;
-        private Users _usersList;
+        private ObservableCollection<User> _usersList;
 
 
-        public Books(Window mainWindow, Library library, Users users)
+        public BooksWindow(Window mainWindow, Library library, ObservableCollection<User> users)
         {
             _library = library;
             _usersList = users;
@@ -33,7 +34,7 @@ namespace LibraryApp.View
             var index = BookList.SelectedIndex;
             if (index < 0) return;
             _selectedBook = _library.GetBook(index);
-            var bookDetails = new BookDetails(this, _selectedBook);
+            var bookDetails = new BookDetailsWindow(this, _selectedBook);
             bookDetails.ShowDialog();
         }
     }

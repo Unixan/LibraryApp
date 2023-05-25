@@ -1,30 +1,21 @@
 ﻿using System.Windows;
 using LibraryApp.Model;
+using LibraryApp.ViewModel;
+using Microsoft.VisualBasic;
 
 namespace LibraryApp.View
 {
-    public partial class UserDetails : Window
+    public partial class UserDetailsWindow : Window
     {
     private User _user;
-        public UserDetails(Window owner, User user)
+        public UserDetailsWindow(Window owner, User user)
         {
             _user = user;
             Owner = owner;
+            var vm = new UserDetailWindowViewModel(_user);
+            DataContext = vm;
             InitializeComponent();
-            Name.Text = user.GetFullName();
-            Address.Text = user.Address;
-            LoanCard.Text = _user.GetLoanCardStatus();
-            
         }
-
-        private void PopulateLoanedBooksList()
-        {
-            foreach (var book in _user.LoanedBooks)
-            {
-
-            }
-        }
-
         private void ButtonBack_OnClick(object sender, RoutedEventArgs e)
         {
             Close();

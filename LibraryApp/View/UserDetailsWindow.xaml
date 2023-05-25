@@ -1,4 +1,4 @@
-﻿<Window x:Class="LibraryApp.View.UserDetails"
+﻿<Window x:Class="LibraryApp.View.UserDetailsWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -8,7 +8,7 @@
         WindowStartupLocation="CenterOwner"
         WindowStyle="None"
         ResizeMode="NoResize"
-        Title="UserDetails" Height="600" Width="600">
+        Title="UserDetailsWindow" Height="600" Width="600">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="120"/>
@@ -25,11 +25,14 @@
         <Label Grid.Row="1" Content="Adresse:"/>
         <Label Grid.Row="2" Content="Lånekort:"/>
         <Label Grid.Row="3" Content="Lånte bøker:"/>
-        <TextBlock Grid.Row="0" Grid.Column="1" x:Name="Name"/>
-        <TextBlock Grid.Row="1" Grid.Column="1" x:Name="Address"/>
-        <TextBlock Grid.Row="2" Grid.Column="1" x:Name="LoanCard"/>
+        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding User.FullName}"/>
+        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding User.Address}"/>
+        <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding User.LoanCardStatus}"/>
         <ScrollViewer Grid.Row="3" Grid.Column="1">
-            <ListView x:Name="LoanedBooks"/>
+            <ListView ItemsSource="{Binding Books}"
+                      SelectedItem="{Binding Book }">
+                
+            </ListView>
         </ScrollViewer>
         <StackPanel Grid.Row="4" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Content="Lån bok"/>

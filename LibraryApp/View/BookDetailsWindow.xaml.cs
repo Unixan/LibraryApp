@@ -3,10 +3,10 @@ using LibraryApp.Model;
 
 namespace LibraryApp.View
 {
-    public partial class BookDetails : Window
+    public partial class BookDetailsWindow : Window
     {
         public Book Book { get; private set; }
-        public BookDetails (Window books, Book book)
+        public BookDetailsWindow(Window books, Book book)
         {
             Book = book;
             Owner = books;
