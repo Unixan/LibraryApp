@@ -18,23 +18,25 @@
             <RowDefinition Height="60"/>
             <RowDefinition Height="60"/>
             <RowDefinition Height="60"/>
+            <RowDefinition Height="60"/>
             <RowDefinition/>
             <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
         <Label Content="Navn:"/>
         <Label Grid.Row="1" Content="Adresse:"/>
         <Label Grid.Row="2" Content="Lånekort:"/>
-        <Label Grid.Row="3" Content="Lånte bøker:"/>
+        <Label Grid.Row="3" Content="ID"/>
+        <Label Grid.Row="4" Content="Lånte bøker:"/>
         <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding User.FullName}"/>
         <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding User.Address}"/>
         <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding User.LoanCardStatus}"/>
-        <ScrollViewer Grid.Row="3" Grid.Column="1">
+        <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding User.Id}"/>
+        <ScrollViewer Grid.Row="4" Grid.Column="1">
             <ListView ItemsSource="{Binding Books}"
                       SelectedItem="{Binding Book }">
-                
             </ListView>
         </ScrollViewer>
-        <StackPanel Grid.Row="4" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
+        <StackPanel Grid.Row="5" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Content="Lån bok"/>
             <Button Content="Tilbakelever bok"/>
             <Button Content="Lånekort" Click="ButtonLoancard_OnClick"/>
@@ -45,5 +47,6 @@
         <Rectangle Grid.Row="2" Grid.ColumnSpan="2"/>
         <Rectangle Grid.Row="3" Grid.ColumnSpan="2"/>
         <Rectangle Grid.Row="4" Grid.ColumnSpan="2"/>
+        <Rectangle Grid.Row="5" Grid.ColumnSpan="2"/>
     </Grid>
 </Window>

@@ -20,9 +20,9 @@ namespace LibraryApp
             _library.AddBook(new Book("Hobbiten, eller Fram og tilbake igjen", "J. R. R. Tolkien", "Fantasi", "Bilbo Lommelun lever et behagelig liv i hobbithullet sitt i Bakken, og det er sjelden han beveger seg lenger enn til spiskammeret. Så en dag dukker trollmannen Gandalv opp sammen med tretten dverger, og vil ha ham med på en reise «fram og tilbake igjen». Dvergenes plan er å røve den veldige skatten som voktes av Smaug, en enorm og svært farlig drage."));
             _library.AddBook(new Book("Tørst", "Jo Nesbø", "Drama", "Et drapsoffer blir funnet i sitt hjem med bitemerker i halsen. Kroppen er tappet for blod. Kan det være vamyprisme - et svært omdiskutert felt i psykiatrien. Tidligere etterforsker Harry Hole vet bedre enn noen at flere av krimhistoriens verste seriemordere har vært diagnostisert som nettopp vampyrister. Men Harry har et annet motiv for å bistå politiet - morderen som slapp unna."));
             _usersList = new ObservableCollection<User>();
-            _usersList.Add(new User(1, "Ståle", "Johansen", "Båtveien 20"));
-            _usersList.Add(new User(2, "Helene", "Persson", "Båtveien 20"));
-            _usersList.Add(new User(3, "Eva", "Johansen", "Minørveien 26"));
+            _usersList.Add(new User("Ståle", "Johansen", "Båtveien 20"));
+            _usersList.Add(new User("Helene", "Persson", "Båtveien 20"));
+            _usersList.Add(new User("Eva", "Johansen", "Minørveien 26"));
         }
 
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)

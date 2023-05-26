@@ -15,7 +15,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <StackPanel>
-        <Button Content="Legg til bruker"/>
+        <Button Content="Legg til bruker" Command="{Binding AddUserCommand}"/>
             <Button Content="Slett bruker" Command ="{Binding DeleteCommand}"/>
         <Button Content="Detaljer" Command="{Binding DetailsCommand}"/>
             <Button Content="Tilbake" Click="ButtonBack_OnClick"/>
@@ -27,9 +27,8 @@
                   AutoGenerateColumns="False"
                   IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="1*"/>
                 <DataGridTextColumn Header="Etternavn" Binding="{Binding LastName}" Width="5*"/>
-            <DataGridTextColumn Header="Navn" Binding="{Binding FirstName}" Width="5*"/>
+                <DataGridTextColumn Header="Navn" Binding="{Binding FirstName}" Width="5*"/>
                 <DataGridTextColumn Header="Adresse" Binding="{Binding Address}" Width="5*"/>
                 <DataGridTextColumn Header="Lånekort" Binding="{Binding LoanCardStatus}" Width="5*"/>
 

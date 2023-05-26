@@ -12,6 +12,14 @@ public class UsersWindowViewModel : ViewModelBase
     public ObservableCollection<User> Users { get; set; }
     public RelayCommand DeleteCommand => new RelayCommand(execute => DeleteUser(), canExecute => CurrentUser != null);
     public RelayCommand DetailsCommand => new RelayCommand(execute => ShowUserDetails(), canExecute => CurrentUser != null);
+    public RelayCommand AddUserCommand => new RelayCommand(execute => AddUser());
+
+    private void AddUser()
+    {
+        var addUserWindow = new AddUserWindow(_window, Users);
+        addUserWindow.ShowDialog();
+    }
+
     private User _currentUser;
 
     public User CurrentUser
@@ -42,7 +50,7 @@ public class UsersWindowViewModel : ViewModelBase
     public void DeleteUser()
     {
         var choice = MessageBox.Show("Er du sikker? Brukeren vil bli slettet for godt",
-            $"Slette ID: {CurrentUser.Id} {CurrentUser.LastName}, {CurrentUser.FirstName}?",
+            $"Slette {CurrentUser.LastName}, {CurrentUser.FirstName}?",
             MessageBoxButton.YesNo,
             MessageBoxImage.Question);
         if (choice == MessageBoxResult.Yes)

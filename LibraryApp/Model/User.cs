@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 
@@ -9,7 +10,7 @@ public class User
     public string FirstName { get;  set; }
     public string LastName { get;  set; }
     public string Address { get;  set; }
-    public int Id { get; private set; }
+    public Guid Id { get; private set; }
     public string FullName => $"{LastName}, {FirstName}";
     public bool HasLoanCard => LoanCard != null;
 
@@ -18,9 +19,9 @@ public class User
     public LoanCard? LoanCard { get; private set; }
     public ObservableCollection<Book> LoanedBooks { get; private set; }
 
-    public User(int id, string firstName, string lastName, string address)
+    public User(string firstName, string lastName, string address)
     {
-        Id = id;
+        Id = Guid.NewGuid();
         FirstName = firstName;
         LastName = lastName;
         Address = address;
