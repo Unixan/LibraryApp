@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Automation;
 using LibraryApp.Model;
@@ -48,7 +49,22 @@ public class AddUserWindowViewModel : ViewModelBase
 
     private void AddUser()
     {
-        MessageBox.Show("success");
+        var exists = CheckIfExists();
+        if (exists)
+        {
+            MessageBox.Show("Brukeren finnes fra før!");
+            EmptyFields();
+            return;
+        }
+        var newUser = new User(UserFirstName, UserLastName, UserAddress);
+        Users.Add(newUser);
+        MessageBox.Show($"{newUser.FullName}\n{newUser.Address}\nBle lagt til");
+        EmptyFields();
+    }
+
+    private bool CheckIfExists()
+    {
+        return Users.Where(user => UserFirstName?.ToLower() == user.FirstName.ToLower()).Where(user => UserLastName?.ToLower() == UserLastName.ToLower()).Any(user => UserAddress?.ToLower() == user.Address.ToLower());
     }
 
     private void EmptyFields()

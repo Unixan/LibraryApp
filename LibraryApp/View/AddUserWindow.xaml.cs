@@ -18,5 +18,10 @@ namespace LibraryApp.View
             DataContext = vm;
             InitializeComponent();
         }
+
+        private void ButtonCloseWindow_OnClick(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }

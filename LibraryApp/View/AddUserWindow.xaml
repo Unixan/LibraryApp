@@ -27,7 +27,7 @@
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
         <Button Content="Legg til" Command="{Binding AddUserCommand}"/>
             <Button Content="Tøm felter" Command="{Binding EmptyFieldsCommand}"/>
-        <Button Content="Avbryt"/>
+        <Button Content="Avbryt" Click="ButtonCloseWindow_OnClick"/>
             </StackPanel>
         </Grid>
 </Window>

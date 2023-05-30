@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using LibraryApp.Model;
 using LibraryApp.ViewModel;
 using Microsoft.VisualBasic;
@@ -12,9 +13,10 @@ namespace LibraryApp.View
         {
             _user = user;
             Owner = owner;
-            var vm = new UserDetailWindowViewModel(_user);
-            DataContext = vm;
             InitializeComponent();
+            var vm = new UserDetailWindowViewModel(this, _user);
+            DataContext = vm;
+            vm.ReloadRequested += vm_ReloadRequested;
         }
         private void ButtonBack_OnClick(object sender, RoutedEventArgs e)
         {
@@ -25,6 +27,18 @@ namespace LibraryApp.View
         {
             var LoanCardWindow = new LoanCardWindow(this, _user);
             LoanCardWindow.ShowDialog();
+            ReloadWindow();
+        }
+        private void vm_ReloadRequested(object? sender, EventArgs e)
+        {
+            ReloadWindow();
+        }
+
+        private void ReloadWindow()
+        {
+            UserDetailsWindow newWindow = new UserDetailsWindow(Owner, _user);
+            newWindow.Show();
+            Close();
         }
     }
 }

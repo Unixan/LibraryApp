@@ -14,11 +14,6 @@ public class UsersWindowViewModel : ViewModelBase
     public RelayCommand DetailsCommand => new RelayCommand(execute => ShowUserDetails(), canExecute => CurrentUser != null);
     public RelayCommand AddUserCommand => new RelayCommand(execute => AddUser());
 
-    private void AddUser()
-    {
-        var addUserWindow = new AddUserWindow(_window, Users);
-        addUserWindow.ShowDialog();
-    }
 
     private User _currentUser;
 
@@ -28,7 +23,7 @@ public class UsersWindowViewModel : ViewModelBase
         set
         {
             _currentUser = value;
-            
+            OnPropertyChanged();
         }
     }
     
@@ -40,11 +35,16 @@ public class UsersWindowViewModel : ViewModelBase
         Users = users;
     }
 
+    private void AddUser()
+    {
+        var addUserWindow = new AddUserWindow(_window, Users);
+        addUserWindow.ShowDialog();
+    }
 
     public void ShowUserDetails()
     {
         var userDetailWindow = new UserDetailsWindow(_window, CurrentUser);
-        userDetailWindow.Show();
+        userDetailWindow.ShowDialog();
     }
 
     public void DeleteUser()

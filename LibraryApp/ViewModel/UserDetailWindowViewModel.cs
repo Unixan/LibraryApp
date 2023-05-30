@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Windows;
 using LibraryApp.Model;
 using LibraryApp.MVVM;
 
@@ -9,6 +10,7 @@ public class UserDetailWindowViewModel : ViewModelBase
     private User _user;
     public ObservableCollection<Book> Books => _user.LoanedBooks;
     private Book _book;
+    private Window _window;
 
     public Book Book
     {
@@ -29,8 +31,9 @@ public class UserDetailWindowViewModel : ViewModelBase
         }
 
     }
-    public UserDetailWindowViewModel(User user)
+    public UserDetailWindowViewModel(Window window, User user)
     {
+        _window = window;
         _user = user;
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using LibraryApp.MVVM;
 
 
 namespace LibraryApp.Model;
@@ -12,11 +13,9 @@ public class User
     public string Address { get;  set; }
     public Guid Id { get; private set; }
     public string FullName => $"{LastName}, {FirstName}";
-    public bool HasLoanCard => LoanCard != null;
+    public string LoanCardStatus => LoanCard != null ? "Gyldig til: " + LoanCard.DateIssued : "Ingen";
 
-    public string LoanCardStatus => HasLoanCard ? "Gyldig til: " + LoanCard.DateIssued : "Ingen";
-
-    public LoanCard? LoanCard { get; private set; }
+    public LoanCard? LoanCard { get;  set; }
     public ObservableCollection<Book> LoanedBooks { get; private set; }
 
     public User(string firstName, string lastName, string address)
@@ -42,6 +41,6 @@ public class User
 
     public string GetLoanCardStatus()
     {
-        return HasLoanCard ? "Gyldig til: " + LoanCard.DateIssued : "Ingen";
+        return LoanCard != null ? "Gyldig til: " + LoanCard.DateIssued : "Ingen";
     }
 }

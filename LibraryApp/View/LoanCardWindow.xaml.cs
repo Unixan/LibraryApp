@@ -1,5 +1,7 @@
-﻿using System.Windows;
+﻿using System;
 using LibraryApp.Model;
+using LibraryApp.ViewModel;
+using System.Windows;
 
 namespace LibraryApp.View
 {
@@ -8,45 +10,24 @@ namespace LibraryApp.View
         private User _user;
         public LoanCardWindow(Window owner, User user)
         {
-            //_user = user;
-            //Owner = owner;
+            Owner = owner;
+            _user = user;
             InitializeComponent();
-            //Id.Content = _user.Id;
-            //Name.Content = _user.GetFullName();
-            //LoanCard.Content = _user.GetLoanCardStatus();
+            var vm = new LoanCardWindowViewModel(this, user);
+            DataContext = vm;
+            vm.ReloadRequested += vm_ReloadRequested;
         }
 
-        private void ButtonBack_OnClick(object sender, RoutedEventArgs e)
+        private void vm_ReloadRequested(object? sender, EventArgs e)
         {
+            ReloadWindow();
+        }
+
+        private void ReloadWindow()
+        {
+            LoanCardWindow newWindow = new LoanCardWindow(Owner, _user);
+            newWindow.Show();
             Close();
-        }
-
-        private void ButtonIssueLoanCard_OnClick(object sender, RoutedEventArgs e)
-        {
-            if (_user.HasLoanCard)
-            {
-                MessageBox.Show("Bruker har allerede lånekort!");
-            }
-            else
-            {
-                _user.IssueLoanCard();
-                MessageBox.Show("Lånekort tildelt for 1 år");
-                Close();
-            }
-        }
-
-        private void ButtonRevokeLoanCard_OnClick(object sender, RoutedEventArgs e)
-        {
-            if (!_user.HasLoanCard)
-            {
-                MessageBox.Show("Bruker har ikke lånekort!");
-            }
-            else
-            {
-                _user.RevokeLoanCard();
-                MessageBox.Show("Lånekort inndratt");
-                Close();
-            }
         }
     }
 }

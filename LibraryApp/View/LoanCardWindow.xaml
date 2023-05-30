@@ -9,7 +9,7 @@
         WindowStyle="None"
         ResizeMode="NoResize" 
         BorderBrush="Black"
-        Title="LoanCardWindow" Height="300" Width="300">
+        Title="LoanCardWindow" Height="300" Width="400">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
@@ -28,15 +28,15 @@
             <Label Content="Lånekort:" VerticalAlignment="Top"/>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="1">
-            <Label x:Name="Id" HorizontalAlignment="Left"/>
-            <Label x:Name="Name" HorizontalAlignment="Left"/>
-            <Label x:Name="LoanCard" HorizontalAlignment="Left"/>
+            <Label HorizontalAlignment="Left" Content="{Binding ID}"/>
+            <Label HorizontalAlignment="Left" Content="{Binding FullName}"/>
+            <Label HorizontalAlignment="Left" Content="{Binding LoanCardStatus}"/>
         </StackPanel>
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Grid.ColumnSpan="2">
-        <Button Content="Tildel kort" Click="ButtonIssueLoanCard_OnClick"/>
-        <Button Content="Frata kort" Click="ButtonRevokeLoanCard_OnClick"/>
+        <Button Content="Tildel kort" Command="{Binding IssueCardCommand}"/>
+        <Button Content="Frata kort" Command="{Binding RevokeCardCommand}"/>
         </StackPanel>
-        <Button Grid.Row="3" Content="Tilbake" Grid.ColumnSpan="2" Click="ButtonBack_OnClick"/>
+        <Button Grid.Row="3" Content="Tilbake" Grid.ColumnSpan="2" Command="{Binding CloseCommand}"/>
         <Rectangle Grid.ColumnSpan="2" Grid.RowSpan="4"/>
     </Grid>
     </Window>
