@@ -8,7 +8,7 @@
         WindowStartupLocation="CenterOwner"
         WindowStyle="None"
         ResizeMode="NoResize" 
-        Title="UsersWindow" Height="400" Width="600">
+        Title="UsersWindow" Height="400" Width="700">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="160"/>
@@ -18,7 +18,7 @@
         <Button Content="Legg til bruker" Command="{Binding AddUserCommand}"/>
             <Button Content="Slett bruker" Command ="{Binding DeleteCommand}"/>
         <Button Content="Detaljer" Command="{Binding DetailsCommand}"/>
-            <Button Content="Tilbake" Click="ButtonBack_OnClick"/>
+            <Button Content="Tilbake" Command="{Binding CloseWindowCommand}"/>
         </StackPanel>
         <DataGrid Grid.Column="1"
                   ItemsSource="{Binding Users}"
@@ -30,7 +30,7 @@
                 <DataGridTextColumn Header="Etternavn" Binding="{Binding LastName}" Width="5*"/>
                 <DataGridTextColumn Header="Navn" Binding="{Binding FirstName}" Width="5*"/>
                 <DataGridTextColumn Header="Adresse" Binding="{Binding Address}" Width="5*"/>
-                <DataGridTextColumn Header="Lånekort" Binding="{Binding LoanCardStatus}" Width="5*"/>
+                <DataGridTextColumn Header="Lånekort" Binding="{Binding LoanCardStatus}" Width="6*"/>
 
             </DataGrid.Columns>
 

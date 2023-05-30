@@ -37,8 +37,8 @@ namespace LibraryApp.View
         private void ReloadWindow()
         {
             UserDetailsWindow newWindow = new UserDetailsWindow(Owner, _user);
-            newWindow.Show();
             Close();
+            newWindow.ShowDialog();
         }
     }
 }

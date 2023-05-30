@@ -13,6 +13,7 @@ public class UsersWindowViewModel : ViewModelBase
     public RelayCommand DeleteCommand => new RelayCommand(execute => DeleteUser(), canExecute => CurrentUser != null);
     public RelayCommand DetailsCommand => new RelayCommand(execute => ShowUserDetails(), canExecute => CurrentUser != null);
     public RelayCommand AddUserCommand => new RelayCommand(execute => AddUser());
+    public RelayCommand CloseWindowCommand => new RelayCommand(execute => CloseWindow(_window));
 
 
     private User _currentUser;
@@ -41,13 +42,14 @@ public class UsersWindowViewModel : ViewModelBase
         addUserWindow.ShowDialog();
     }
 
-    public void ShowUserDetails()
+    private void ShowUserDetails()
     {
         var userDetailWindow = new UserDetailsWindow(_window, CurrentUser);
         userDetailWindow.ShowDialog();
+        ReloadWindow();
     }
 
-    public void DeleteUser()
+    private void DeleteUser()
     {
         var choice = MessageBox.Show("Er du sikker? Brukeren vil bli slettet for godt",
             $"Slette {CurrentUser.LastName}, {CurrentUser.FirstName}?",

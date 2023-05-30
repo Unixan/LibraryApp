@@ -26,8 +26,8 @@ namespace LibraryApp.View
         private void ReloadWindow()
         {
             LoanCardWindow newWindow = new LoanCardWindow(Owner, _user);
-            newWindow.Show();
             Close();
+            newWindow.ShowDialog();
         }
     }
 }

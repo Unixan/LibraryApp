@@ -2,6 +2,7 @@
 using LibraryApp.Model;
 using System.Windows;
 using LibraryApp.ViewModel;
+using System;
 
 namespace LibraryApp.View
 {
@@ -13,18 +14,23 @@ namespace LibraryApp.View
         public UsersWindow(Window mainWindow, Library library, ObservableCollection<User> users)
         {
             _users = users;
+            InitializeComponent();
             var vm = new UsersWindowViewModel(this, _users);
             DataContext = vm;
             _library = library;
             Owner = mainWindow;
-            InitializeComponent();
-          
-        }
+            vm.ReloadRequested += vm_ReloadRequested;
 
-        private void ButtonBack_OnClick(object sender, RoutedEventArgs e)
-        {
-            Close();
         }
-        
+        private void vm_ReloadRequested(object? sender, EventArgs e)
+        {
+            ReloadWindow();
+        }
+        private void ReloadWindow()
+        {
+            UsersWindow newWindow = new UsersWindow(Owner, _library, _users);
+            Close();
+            newWindow.ShowDialog();
+        }
     }
 }
