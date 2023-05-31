@@ -35,9 +35,5 @@
             </DataGrid.Columns>
 
         </DataGrid >
-        <!--<ScrollViewer Grid.Column="1" >
-            <ListView x:Name="UserList" 
-                      SelectionMode="Single" Width="320"/>
-        </ScrollViewer>-->
     </Grid>
 </Window>

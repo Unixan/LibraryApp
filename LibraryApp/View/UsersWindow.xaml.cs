@@ -8,17 +8,17 @@ namespace LibraryApp.View
 {
     public partial class UsersWindow : Window
     {
-        private Library _library;
+        private ObservableCollection<Book> _library;
         private User _selectedUser;
         private ObservableCollection<User> _users;
-        public UsersWindow(Window mainWindow, Library library, ObservableCollection<User> users)
+        public UsersWindow(Window mainWindow, ObservableCollection<Book> library, ObservableCollection<User> users)
         {
             _users = users;
             InitializeComponent();
-            var vm = new UsersWindowViewModel(this, _users);
-            DataContext = vm;
             _library = library;
             Owner = mainWindow;
+            var vm = new UsersWindowViewModel(this, _users, _library);
+            DataContext = vm;
             vm.ReloadRequested += vm_ReloadRequested;
 
         }

@@ -37,10 +37,9 @@
             </ListView>
         </ScrollViewer>
         <StackPanel Grid.Row="5" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Content="Lån bok"/>
-            <Button Content="Tilbakelever bok"/>
-            <Button Content="Lånekort" Click="ButtonLoancard_OnClick"/>
-            <Button Content="Tilbake" Click="ButtonBack_OnClick"/>
+            <Button Content="Rediger bøker" Command="{Binding EditBooksCommand}"/>
+            <Button Content="Lånekort" Command="{Binding LoanCardCommand}"/>
+            <Button Content="Tilbake" Command="{Binding CloseCommand}"/>
             </StackPanel>
         <Rectangle Grid.ColumnSpan="2"/>
         <Rectangle Grid.Row="1" Grid.ColumnSpan="2"/>

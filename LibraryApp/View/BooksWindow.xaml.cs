@@ -7,19 +7,19 @@ namespace LibraryApp.View
 {
     public partial class BooksWindow : Window
     {
-        private Library _library;
+        private ObservableCollection<Book> _library;
         private Book _selectedBook;
         private ObservableCollection<User> _usersList;
 
 
-        public BooksWindow(Window mainWindow, Library library, ObservableCollection<User> users)
+        public BooksWindow(Window mainWindow, ObservableCollection<Book> library, ObservableCollection<User> users)
         {
             _library = library;
             _usersList = users;
             Owner = mainWindow;
             InitializeComponent();
         
-            foreach (var booklisting in _library.Books.Select(book => new BookListing(book)))
+            foreach (var booklisting in _library.Select(book => new BookListing(book)))
             {
                 BookList.Items.Add(booklisting);
             }
@@ -33,7 +33,7 @@ namespace LibraryApp.View
         {
             var index = BookList.SelectedIndex;
             if (index < 0) return;
-            _selectedBook = _library.GetBook(index);
+            _selectedBook = _library[index];
             var bookDetails = new BookDetailsWindow(this, _selectedBook);
             bookDetails.ShowDialog();
         }

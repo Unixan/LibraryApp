@@ -10,11 +10,8 @@ public class UsersWindowViewModel : ViewModelBase
 {
     private Window _window;
     public ObservableCollection<User> Users { get; set; }
-    public RelayCommand DeleteCommand => new RelayCommand(execute => DeleteUser(), canExecute => CurrentUser != null);
-    public RelayCommand DetailsCommand => new RelayCommand(execute => ShowUserDetails(), canExecute => CurrentUser != null);
-    public RelayCommand AddUserCommand => new RelayCommand(execute => AddUser());
-    public RelayCommand CloseWindowCommand => new RelayCommand(execute => CloseWindow(_window));
 
+    private ObservableCollection<Book> _library;
 
     private User _currentUser;
 
@@ -27,13 +24,18 @@ public class UsersWindowViewModel : ViewModelBase
             OnPropertyChanged();
         }
     }
+    public RelayCommand DeleteCommand => new RelayCommand(execute => DeleteUser(), canExecute => CurrentUser != null);
+    public RelayCommand DetailsCommand => new RelayCommand(execute => ShowUserDetails(), canExecute => CurrentUser != null);
+    public RelayCommand AddUserCommand => new RelayCommand(execute => AddUser());
+    public RelayCommand CloseWindowCommand => new RelayCommand(execute => CloseWindow(_window));
     
 
 
-    public UsersWindowViewModel(Window window,ObservableCollection<User> users)
+    public UsersWindowViewModel(Window window,ObservableCollection<User> users, ObservableCollection<Book> library)
     {
         _window = window;
         Users = users;
+        _library = library;
     }
 
     private void AddUser()
@@ -44,7 +46,7 @@ public class UsersWindowViewModel : ViewModelBase
 
     private void ShowUserDetails()
     {
-        var userDetailWindow = new UserDetailsWindow(_window, CurrentUser);
+        var userDetailWindow = new UserDetailsWindow(_window, CurrentUser, _library);
         userDetailWindow.ShowDialog();
         ReloadWindow();
     }

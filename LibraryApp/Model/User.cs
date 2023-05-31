@@ -16,7 +16,7 @@ public class User
     public string LoanCardStatus => LoanCard != null ? "Gyldig til: " + LoanCard.DateIssued : "Ingen";
 
     public LoanCard? LoanCard { get;  set; }
-    public ObservableCollection<Book> LoanedBooks { get; private set; }
+    public ObservableCollection<UserBookItem> LoanedBooks { get; private set; }
 
     public User(string firstName, string lastName, string address)
     {
@@ -24,7 +24,7 @@ public class User
         FirstName = firstName;
         LastName = lastName;
         Address = address;
-        LoanedBooks = new ObservableCollection<Book>();
+        LoanedBooks = new ObservableCollection<UserBookItem>();
     }
 
     

@@ -27,7 +27,7 @@ namespace LibraryApp
 
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
-            var booksWindow = new BooksWindow(this, _library, _usersList);
+            var booksWindow = new BooksWindow(this, _library.Books, _usersList);
             booksWindow.ShowDialog();
 
         }
@@ -38,7 +38,7 @@ namespace LibraryApp
         }
         private void ButtonUsers_OnClick(object sender, RoutedEventArgs e)
         {
-            var usersWindow = new UsersWindow(this, _library, _usersList);
+            var usersWindow = new UsersWindow(this, _library.Books, _usersList);
             usersWindow.ShowDialog();
         }
 
