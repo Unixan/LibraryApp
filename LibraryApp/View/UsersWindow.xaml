@@ -25,7 +25,8 @@
                   SelectedItem="{Binding CurrentUser}"
                   CanUserAddRows="False" CanUserDeleteRows="False"
                   AutoGenerateColumns="False"
-                  IsReadOnly="True">
+                  IsReadOnly="True"
+                  SelectionMode="Single">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Etternavn" Binding="{Binding LastName}" Width="5*"/>
                 <DataGridTextColumn Header="Navn" Binding="{Binding FirstName}" Width="5*"/>

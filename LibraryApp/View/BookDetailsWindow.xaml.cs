@@ -25,7 +25,7 @@ namespace LibraryApp.View
 
         private string GetBookStatus(Book book)
         {
-            return book.IsAvailable ? "Ledig" : "Lånt ut til: " + book.LoanedTo;
+            return book.IsAvailable ? "Ledig" : "Lånt ut til: " + book.LoanedTo.FullName;
         }
 
         private void ButtonClose_OnClick(object sender, RoutedEventArgs e)

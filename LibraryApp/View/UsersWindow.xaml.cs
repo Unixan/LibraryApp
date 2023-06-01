@@ -28,7 +28,7 @@ namespace LibraryApp.View
         }
         private void ReloadWindow()
         {
-            UsersWindow newWindow = new UsersWindow(Owner, _library, _users);
+            var newWindow = new UsersWindow(Owner, _library, _users);
             Close();
             newWindow.ShowDialog();
         }

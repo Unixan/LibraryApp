@@ -47,6 +47,10 @@ public class AddUserWindowViewModel : ViewModelBase
     public RelayCommand EmptyFieldsCommand => new RelayCommand(execute => EmptyFields());
     public RelayCommand AddUserCommand => new RelayCommand(execute => AddUser());
 
+    public AddUserWindowViewModel(Window window, ObservableCollection<User> users)
+    {
+        Users = users;
+    }
     private void AddUser()
     {
         var exists = CheckIfExists();
@@ -75,8 +79,4 @@ public class AddUserWindowViewModel : ViewModelBase
 
     }
 
-    public AddUserWindowViewModel(Window window, ObservableCollection<User> users)
-    {
-        Users = users;
-    }
 }
