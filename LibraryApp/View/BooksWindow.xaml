@@ -8,7 +8,7 @@
         WindowStartupLocation="CenterOwner"
         WindowStyle="None"
         ResizeMode="NoResize" 
-        Title="Books" Height="500" Width="600">
+        Title="Books" Height="500" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
@@ -22,16 +22,26 @@
         <Label Content="Bøker" HorizontalAlignment="Center" Grid.Row="0" Grid.ColumnSpan="2" FontSize="22"/>
         <Separator Grid.Row="1" Grid.ColumnSpan="2"/>
         <StackPanel VerticalAlignment="Top" Grid.Row="2">
-        <Button Content="Legg til bok"/>
-        <Button Content="Fjern bok"/>
-        <Button Content="Detaljer" Click="ButtonDetails_OnClick" />
-        <Button Content="Tilbake" Click="ButtonClose_OnClick"/>
+        <Button Content="Legg til bok" Command="{Binding AddBookCommand}"/>
+        <Button Content="Fjern bok" Command="{Binding DeleteBookCommand}"/>
+        <Button Content="Detaljer" Command="{Binding BookDetailsCommand}"/>
+        <Button Content="Tilbake" Command="{Binding CloseCommand}"/>
         </StackPanel>
-        <ScrollViewer Grid.Row="2" Grid.Column="1" >
-            <ListView x:Name="BookList" 
-                      Width="428" 
-                      SelectionMode="Single"
-                      />
-        </ScrollViewer>
+       <DataGrid Grid.Row="2"
+                 Grid.Column="1"
+                 CanUserAddRows="False" CanUserDeleteRows="False"
+                 AutoGenerateColumns="False"
+                 IsReadOnly="True"
+                 
+                 ItemsSource="{Binding Books}"
+                 SelectedItem="{Binding SelectedBook}">
+           <DataGrid.Columns>
+               <DataGridTextColumn Header="Tittel" Binding="{Binding Title}"  Width="2*"/>
+               <DataGridTextColumn Header="Forfatter" Binding="{Binding Author}" Width="1*"/>
+               <DataGridTextColumn Header="Sjanger" Binding="{Binding Genre}" Width="1*"/>
+               <DataGridTextColumn Header="Status" Binding="{Binding Availability}" Width="2*"/>
+           </DataGrid.Columns>
+           </DataGrid>
+       
     </Grid>
 </Window>

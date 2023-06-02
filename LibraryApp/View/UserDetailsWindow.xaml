@@ -39,7 +39,7 @@
            <DataGrid.Columns>
                 <DataGridTextColumn Header="Tittel" Binding="{Binding Title}" Width="1*"/>
                 <DataGridTextColumn Header="Lånt dato" Binding="{Binding LoanedOn}" Width="1*"/>
-            </DataGrid.Columns>
+           </DataGrid.Columns>
         </DataGrid>
         <StackPanel Grid.Row="5" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Content="Rediger bøker" Command="{Binding EditBooksCommand}"/>
