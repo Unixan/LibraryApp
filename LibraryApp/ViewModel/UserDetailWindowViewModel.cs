@@ -1,18 +1,29 @@
-﻿using System.Collections.ObjectModel;
-using System.Windows;
-using LibraryApp.Model;
+﻿using LibraryApp.Model;
 using LibraryApp.MVVM;
 using LibraryApp.View;
+using System.Collections.ObjectModel;
+using System.Windows;
 
 namespace LibraryApp.ViewModel;
 
 public class UserDetailWindowViewModel : ViewModelBase
 {
     private User _user;
-    public ObservableCollection<UserBookItem> Books;
+    public ObservableCollection<UserBookItem> Books { get; set; }
     private Book _book;
     private Window _window;
     private ObservableCollection<Book> _library;
+    private string _loanCardStatus;
+
+    public string LoanCardStatus
+    {
+        get { return _loanCardStatus; }
+        set
+        {
+            _loanCardStatus = value;
+            OnPropertyChanged();
+        }
+    }
 
     public Book Book
     {
@@ -28,7 +39,7 @@ public class UserDetailWindowViewModel : ViewModelBase
         get { return _user; }
         set
         {
-            _user = value; 
+            _user = value;
             OnPropertyChanged();
         }
     }
@@ -41,19 +52,23 @@ public class UserDetailWindowViewModel : ViewModelBase
         _window = window;
         _user = user;
         _library = library;
+        _loanCardStatus = _user.LoanCardStatus;
         Books = User.LoanedBooks;
     }
+
 
     private void EditLoanCard()
     {
         var LoanCardWindow = new LoanCardWindow(_window, _user);
         LoanCardWindow.ShowDialog();
-        ReloadWindow();
+        LoanCardStatus = _user.LoanCardStatus;
     }
 
     private void EditBooks()
     {
-        var editBooksWindow = new UserBooksWindow(_window, _user, _library );
+        var editBooksWindow = new UserBooksWindow(_window, _user, _library);
         editBooksWindow.ShowDialog();
+        Books = _user.LoanedBooks;
+        OnPropertyChanged(nameof(Books));
     }
 }

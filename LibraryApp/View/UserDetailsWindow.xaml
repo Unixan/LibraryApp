@@ -29,13 +29,18 @@
         <Label Grid.Row="4" Content="Lånte bøker:"/>
         <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding User.FullName}"/>
         <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding User.Address}"/>
-        <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding User.LoanCardStatus}"/>
+        <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding LoanCardStatus}"/>
         <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding User.Id}"/>
-        <ScrollViewer Grid.Row="4" Grid.Column="1">
-            <ListView ItemsSource="{Binding Books}"
-                      SelectedItem="{Binding Book }">
-            </ListView>
-        </ScrollViewer>
+        <DataGrid Grid.Row="4" Grid.Column="1"
+                  CanUserAddRows="False" CanUserDeleteRows="False"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  ItemsSource="{Binding Books}">
+           <DataGrid.Columns>
+                <DataGridTextColumn Header="Tittel" Binding="{Binding Title}" Width="1*"/>
+                <DataGridTextColumn Header="Lånt dato" Binding="{Binding LoanedOn}" Width="1*"/>
+            </DataGrid.Columns>
+        </DataGrid>
         <StackPanel Grid.Row="5" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Content="Rediger bøker" Command="{Binding EditBooksCommand}"/>
             <Button Content="Lånekort" Command="{Binding LoanCardCommand}"/>

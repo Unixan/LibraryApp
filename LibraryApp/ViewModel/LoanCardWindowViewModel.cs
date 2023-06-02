@@ -14,25 +14,37 @@ public class LoanCardWindowViewModel : ViewModelBase
     private User _user;
     public Guid ID => _user.Id;
     public string FullName => _user.FullName;
-   public string LoanCardStatus => _user.LoanCardStatus;
+   private string _loanCardStatus;
 
-    public LoanCardWindowViewModel(Window window, User user)
+   public string LoanCardStatus
+   {
+       get { return _loanCardStatus; }
+       set
+       {
+           _loanCardStatus = value;
+           OnPropertyChanged();
+       }
+   }
+
+   public LoanCardWindowViewModel(Window window, User user)
     {
         _window = window;
         _user = user;
+        _loanCardStatus = _user.LoanCardStatus;
+
 
     }
     private void IssueLoanCard()
     {
         _user.IssueLoanCard();
         MessageBox.Show("Lånekort tildelt for 1 år");
-        ReloadWindow();
+        LoanCardStatus = _user.LoanCardStatus;
     }
 
     private void RevokeLoanCard()
     {
         _user.RevokeLoanCard();
         MessageBox.Show("Lånekort inndratt");
-        ReloadWindow();
+        LoanCardStatus = _user.LoanCardStatus;
     }
 }

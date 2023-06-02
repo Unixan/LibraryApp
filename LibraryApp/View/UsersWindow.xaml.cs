@@ -9,7 +9,6 @@ namespace LibraryApp.View
     public partial class UsersWindow : Window
     {
         private ObservableCollection<Book> _library;
-        private User _selectedUser;
         private ObservableCollection<User> _users;
         public UsersWindow(Window mainWindow, ObservableCollection<Book> library, ObservableCollection<User> users)
         {
