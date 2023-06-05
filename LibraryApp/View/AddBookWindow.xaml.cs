@@ -1,27 +1,31 @@
-﻿using System.Collections.ObjectModel;
-using System.Windows;
-using LibraryApp.Model;
+﻿using LibraryApp.Model;
 using LibraryApp.ViewModel;
+using System.Collections.ObjectModel;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace LibraryApp.View
 {
     public partial class AddBookWindow : Window
     {
-        private ObservableCollection<Book> _books;
-        private string _title;
-        public string Title
-        {
-            get { return _title; }
-            set { _title = value; }
-        }
-        private string _author;
-        private string _description;
-        private string _genre;
+        public ObservableCollection<Book> Books;
+        private Window _window;
+        public AddBookWindowViewModel Vm;
+
         public AddBookWindow(Window window, ObservableCollection<Book> books)
         {
-            Owner = window;
+            _window = window;
+            Owner = _window;
+            Books = books;
             InitializeComponent();
-            var vm = new AddBookWindowViewModel(_books);
+            Vm = new AddBookWindowViewModel(this, Books);
+            DataContext = Vm;
+        }
+
+        private void TextBoxBase_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            var textBox = (TextBox)sender;
+            Vm.Description = textBox.Text;
         }
     }
 }

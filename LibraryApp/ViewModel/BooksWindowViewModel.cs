@@ -47,6 +47,7 @@ public class BooksWindowViewModel : ViewModelBase
     }
     private void AddBook()
     {
-     
+        var addBookWindow = new AddBookWindow(_window, Books);
+        addBookWindow.ShowDialog();
     }
 }

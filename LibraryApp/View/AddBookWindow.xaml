@@ -5,8 +5,54 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LibraryApp.View"
         mc:Ignorable="d"
-        Title="AddBookWindow" Height="450" Width="800">
+        WindowStartupLocation="CenterOwner"
+        WindowStyle="None"
+        ResizeMode="NoResize" 
+        Title="AddBookWindow" Height="600" Width="500">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" 
+               Content="Legg til bok" 
+               FontSize="20" 
+               FontWeight="Bold"/>
+        <StackPanel Grid.Row="1">
+            <Label Content="Tittel" />
+            <TextBox Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}" Width="300"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2">
+            <Label Content="Forfatter" />
+            <TextBox Text="{Binding Author, UpdateSourceTrigger=PropertyChanged}" Width="300"/>
+        </StackPanel>
+        <StackPanel Grid.Row="3">
+            <Label Content="Sjanger" />
+            <ComboBox ItemsSource="{Binding Options}" 
+                      SelectedItem="{Binding SelectedOption}"
+                      Width="300"/>
+        </StackPanel>
+        <StackPanel Grid.Row="4" >
+            <Label Content="Sammendrag" />
+            <TextBox Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}"
+                     
+                     MaxLength="1000"
+                     TextChanged="TextBoxBase_OnTextChanged"
+                     Margin="20,0"
+                     Height="200"
+                     TextWrapping="Wrap"
+                     AcceptsReturn="True"
+                     ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+            <Label Content="Max 1000 tegn"/>
+        </StackPanel>
+        <StackPanel Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="Legg til" Command="{Binding AddBookCommand}"/>
+            <Button Content="Tøm Felter" Command="{Binding ClearFieldsCommand}"/>
+            <Button Content="Avbryt" Command="{Binding CloseWindowCommand}"/>
+        </StackPanel>
     </Grid>
 </Window>
