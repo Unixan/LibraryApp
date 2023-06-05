@@ -43,6 +43,7 @@ public class BooksWindowViewModel : ViewModelBase
         if (choice == MessageBoxResult.Yes)
         {
             Books.Remove(SelectedBook);
+            SelectedBook = null;
         }   
     }
     private void AddBook()

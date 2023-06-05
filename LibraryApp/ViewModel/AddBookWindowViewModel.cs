@@ -1,5 +1,4 @@
-﻿using System;
-using LibraryApp.Model;
+﻿using LibraryApp.Model;
 using LibraryApp.MVVM;
 using System.Collections.ObjectModel;
 using System.Windows;
@@ -8,9 +7,10 @@ namespace LibraryApp.ViewModel;
 
 public class AddBookWindowViewModel : ViewModelBase
 {
-    public RelayCommand AddBookCommand => new RelayCommand(execute => AddBook(),canExecute => Title != string.Empty && Author != string.Empty && SelectedOption != null && Description != string.Empty );
-    public RelayCommand ClearFieldsCommand => new RelayCommand(execute => EmptyFields(), canExecute => Title != string.Empty || Author != string.Empty || SelectedOption != null || Description != string.Empty);
+    public RelayCommand AddBookCommand => new RelayCommand(execute => AddBook(),canExecute => !string.IsNullOrWhiteSpace(Title) && !string.IsNullOrWhiteSpace(Author) && !string.IsNullOrWhiteSpace(SelectedOption) && !string.IsNullOrWhiteSpace(Description) );
+    public RelayCommand ClearFieldsCommand => new RelayCommand(execute => EmptyFields(), canExecute => !string.IsNullOrWhiteSpace(Title) || !string.IsNullOrWhiteSpace(Author) || !string.IsNullOrWhiteSpace(SelectedOption) || !string.IsNullOrWhiteSpace(Description));
     public RelayCommand CloseWindowCommand => new RelayCommand(execute => SureClose());
+
     private ObservableCollection<string> _options;
     public ObservableCollection<string> Options
     {
@@ -21,7 +21,7 @@ public class AddBookWindowViewModel : ViewModelBase
             OnPropertyChanged();
         }
     }
-    private string? _selectedOption;
+    private string _selectedOption;
     public string? SelectedOption
     {
         get { return _selectedOption; }
@@ -77,19 +77,15 @@ public class AddBookWindowViewModel : ViewModelBase
     public AddBookWindowViewModel(Window window, ObservableCollection<Book> books)
     {
         _window = window;
-        Title = string.Empty;
-        Author = string.Empty;
-        Description = string.Empty;
-        _books = books;
+       _books = books;
         _options = new ObservableCollection<string>
         {
             "Barnebøker",
-            "Biografi/autobiografi",
-            "Drama/teaterstykke",
+            "Biografi",
+            "Drama",
             "Fantasi",
             "Faglitteratur",
             "Filosofi",
-            "Forretning/entreprenørskap",
             "Historisk skjønnlitteratur",
             "Humor",
             "Krim",
@@ -113,8 +109,7 @@ public class AddBookWindowViewModel : ViewModelBase
     }
     private void SureClose()
     {
-        if (Title != string.Empty || Author != string.Empty || SelectedOption != null ||
-            Description != string.Empty)
+        if (!string.IsNullOrWhiteSpace(Title) || !string.IsNullOrWhiteSpace(Author) || !string.IsNullOrWhiteSpace(SelectedOption) || !string.IsNullOrWhiteSpace(Description))
         {
             var choice = MessageBox.Show("Er du sikker? Endringene vil bli forkastet", "Endringene er ikke lagret",
                 MessageBoxButton.YesNo, MessageBoxImage.Warning);
