@@ -6,7 +6,7 @@ using System.Windows.Input;
 
 namespace LibraryApp
 {
-
+    //THIS IS A CLONE!
     public partial class MainWindow : Window
     {
         private Library _library;
