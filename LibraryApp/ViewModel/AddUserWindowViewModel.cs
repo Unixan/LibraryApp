@@ -44,8 +44,8 @@ public class AddUserWindowViewModel : ViewModelBase
         }
     }
 
-    public RelayCommand EmptyFieldsCommand => new RelayCommand(execute => EmptyFields());
-    public RelayCommand AddUserCommand => new RelayCommand(execute => AddUser());
+    public RelayCommand AddUserCommand => new RelayCommand(execute => AddUser(), canExecute => !string.IsNullOrWhiteSpace(UserFirstName) && !string.IsNullOrWhiteSpace(UserLastName) && !string.IsNullOrWhiteSpace(UserAddress));
+    public RelayCommand EmptyFieldsCommand => new RelayCommand(execute => EmptyFields(), canExecute => !string.IsNullOrWhiteSpace(UserFirstName) || !string.IsNullOrWhiteSpace(UserLastName) || !string.IsNullOrWhiteSpace(UserAddress));
 
     public AddUserWindowViewModel(Window window, ObservableCollection<User> users)
     {
@@ -68,7 +68,7 @@ public class AddUserWindowViewModel : ViewModelBase
 
     private bool CheckIfExists()
     {
-        return Users.Where(user => UserFirstName?.ToLower() == user.FirstName.ToLower()).Where(user => UserLastName?.ToLower() == UserLastName.ToLower()).Any(user => UserAddress?.ToLower() == user.Address.ToLower());
+        return Users.Where(user => user.FirstName.ToLower() == UserFirstName.ToLower()).Where(user => user.LastName.ToLower() == UserLastName.ToLower()).Any(user => user.Address.ToLower() == UserAddress.ToLower());
     }
 
     private void EmptyFields()

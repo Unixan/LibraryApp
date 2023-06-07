@@ -19,11 +19,11 @@
             <Label Content="Legg til bruker" HorizontalAlignment="Center"/>
             <StackPanel Grid.Row="1" HorizontalAlignment="Center">
             <Label Content="Fornavn:" HorizontalAlignment="Center"/>
-            <TextBox Width="200" Height="30" FontSize="16" Text="{Binding UserFirstName}"/>
+            <TextBox Width="200" Height="30" FontSize="16"  Text="{Binding UserFirstName, UpdateSourceTrigger=PropertyChanged}"/>
             <Label Content="Etternavn:" HorizontalAlignment="Center"/>
-            <TextBox Width="200" Height="30" FontSize="16" Text="{Binding UserLastName}"/>
+            <TextBox Width="200" Height="30" FontSize="16" Text="{Binding UserLastName, UpdateSourceTrigger=PropertyChanged}"/>
             <Label Content="Adresse:" HorizontalAlignment="Center"/>
-            <TextBox Width="200" Height="30" FontSize="16" Text="{Binding UserAddress}"/>
+            <TextBox Width="200" Height="30" FontSize="16" Text="{Binding UserAddress, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
         <Button Content="Legg til" Command="{Binding AddUserCommand}"/>
