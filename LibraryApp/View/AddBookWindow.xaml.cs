@@ -8,11 +8,11 @@ namespace LibraryApp.View
 {
     public partial class AddBookWindow : Window
     {
-        public ObservableCollection<Book> Books;
+        public ObservableCollection<Book?> Books;
         private Window _window;
         public AddBookWindowViewModel Vm;
 
-        public AddBookWindow(Window window, ObservableCollection<Book> books)
+        public AddBookWindow(Window window, ObservableCollection<Book?> books)
         {
             _window = window;
             Owner = _window;

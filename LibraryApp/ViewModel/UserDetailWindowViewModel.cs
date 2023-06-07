@@ -12,7 +12,7 @@ public class UserDetailWindowViewModel : ViewModelBase
     public ObservableCollection<UserBookItem> Books { get; set; }
     private Book _book;
     private Window _window;
-    private ObservableCollection<Book> _library;
+    private ObservableCollection<Book?> _library;
     private string _loanCardStatus;
 
     public string LoanCardStatus
@@ -47,7 +47,7 @@ public class UserDetailWindowViewModel : ViewModelBase
     public RelayCommand EditBooksCommand => new RelayCommand(execute => EditBooks());
     public RelayCommand LoanCardCommand => new RelayCommand(execute => EditLoanCard());
     public RelayCommand CloseCommand => new RelayCommand(execute => CloseWindow(_window));
-    public UserDetailWindowViewModel(Window window, User user, ObservableCollection<Book> library)
+    public UserDetailWindowViewModel(Window window, User user, ObservableCollection<Book?> library)
     {
         _window = window;
         _user = user;
@@ -60,7 +60,9 @@ public class UserDetailWindowViewModel : ViewModelBase
     private void EditLoanCard()
     {
         var LoanCardWindow = new LoanCardWindow(_window, _user);
+        _window.Opacity = 0;
         LoanCardWindow.ShowDialog();
+        _window.Opacity = 1;
         LoanCardStatus = _user.LoanCardStatus;
     }
 

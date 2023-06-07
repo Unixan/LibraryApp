@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using LibraryApp.MVVM;
 
 
 namespace LibraryApp.Model;
@@ -16,7 +14,7 @@ public class User
     public string LoanCardStatus => LoanCard != null ? "Gyldig til: " + LoanCard.DateIssued : "Ingen";
 
     public LoanCard? LoanCard { get; private set; }
-    public ObservableCollection<UserBookItem> LoanedBooks { get; private set; }
+    public ObservableCollection<UserBookItem> LoanedBooks { get; protected set; }
 
     public User(string firstName, string lastName, string address)
     {

@@ -12,9 +12,9 @@ namespace LibraryApp.View
         private Window _window;
         private ObservableCollection<UserBookItem> _loanedBooks;
         private User _user;
-        private ObservableCollection<Book> _library;
+        private ObservableCollection<Book?> _library;
         
-        public UserBooksWindow(Window window, User user, ObservableCollection<Book> library)
+        public UserBooksWindow(Window window, User user, ObservableCollection<Book?> library)
         {
             Owner = window;
             _window = window;

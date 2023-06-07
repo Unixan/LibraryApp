@@ -10,7 +10,8 @@
                 <ResourceDictionary Source="Styles/Label.xaml"/>
                 <ResourceDictionary Source="Styles/DetailsTextBlock.xaml"/>
                 <ResourceDictionary Source="Styles/Rectangle.xaml"/>
-             </ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/Window.xaml"/>
+              </ResourceDictionary.MergedDictionaries>
          </ResourceDictionary>
     </Application.Resources>
 </Application>

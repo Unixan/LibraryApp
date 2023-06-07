@@ -1,7 +1,7 @@
-﻿using System.Collections.ObjectModel;
-using System.Windows;
-using LibraryApp.Model;
+﻿using LibraryApp.Model;
 using LibraryApp.ViewModel;
+using System.Collections.ObjectModel;
+using System.Windows;
 
 namespace LibraryApp.View
 {
@@ -14,14 +14,9 @@ namespace LibraryApp.View
             Users = users;
             Window = window;
             Owner = Window;
-            var vm = new AddUserWindowViewModel(Window, Users);
+            var vm = new AddUserWindowViewModel(this, Users);
             DataContext = vm;
             InitializeComponent();
-        }
-
-        private void ButtonCloseWindow_OnClick(object sender, RoutedEventArgs e)
-        {
-            Close();
         }
     }
 }

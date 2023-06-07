@@ -7,6 +7,8 @@
         mc:Ignorable="d" 
         WindowStartupLocation="CenterOwner"
         WindowStyle="None"
+        Style="{StaticResource {x:Type Window}}"
+        AllowsTransparency="True"
         ResizeMode="NoResize" 
         Title="Books" Height="500" Width="800">
     <Grid>
@@ -23,7 +25,7 @@
         <Separator Grid.Row="1" Grid.ColumnSpan="2"/>
         <StackPanel VerticalAlignment="Top" Grid.Row="2">
         <Button Content="Legg til bok" Command="{Binding AddBookCommand}"/>
-        <Button Content="Fjern bok" Command="{Binding DeleteBookCommand}"/>
+        <Button Content="Slett bok" Command="{Binding DeleteBookCommand}"/>
         <Button Content="Detaljer" Command="{Binding BookDetailsCommand}"/>
         <Button Content="Tilbake" Command="{Binding CloseCommand}"/>
         </StackPanel>

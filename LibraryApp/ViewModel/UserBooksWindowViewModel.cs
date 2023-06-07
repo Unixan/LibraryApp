@@ -16,8 +16,8 @@ public class UserBooksWindowViewModel : ViewModelBase
     private Window _window;
     public ObservableCollection<UserBookItem> LoanedBooks { get; set; }
     public ObservableCollection<UserBookItem> TempLoanedBooks { get; set; }
-    public ObservableCollection<Book> LibraryBooks { get; set; }
-    public ObservableCollection<Book> TempAvailableLibraryBooks { get; set; }
+    public ObservableCollection<Book?> LibraryBooks { get; set; }
+    public ObservableCollection<Book?> TempAvailableLibraryBooks { get; set; }
     private bool _changesMade = false;
     private string _userName;
     public string UserName
@@ -60,7 +60,7 @@ public class UserBooksWindowViewModel : ViewModelBase
         }
     }
 
-    public UserBooksWindowViewModel(Window window, User user, ObservableCollection<UserBookItem> loanedBooks, ObservableCollection<Book> libraryBooks)
+    public UserBooksWindowViewModel(Window window, User user, ObservableCollection<UserBookItem> loanedBooks, ObservableCollection<Book?> libraryBooks)
     {
         _window = window;
         _user = user;
@@ -113,9 +113,9 @@ public class UserBooksWindowViewModel : ViewModelBase
         }
     }
 
-    private ObservableCollection<Book> GetAvailableBooks()
+    private ObservableCollection<Book?> GetAvailableBooks()
     {
-        return new ObservableCollection<Book>(LibraryBooks.Where(book => book.IsAvailable));
+        return new ObservableCollection<Book?>(LibraryBooks.Where(book => book.IsAvailable));
     }
 
     private void BookListsChanged()

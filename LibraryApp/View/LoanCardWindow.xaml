@@ -7,8 +7,9 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterOwner"
         WindowStyle="None"
+        Style="{StaticResource {x:Type Window}}"
+        AllowsTransparency="True"
         ResizeMode="NoResize" 
-        BorderBrush="Black"
         Title="LoanCardWindow" Height="300" Width="400">
     <Grid>
         <Grid.RowDefinitions>

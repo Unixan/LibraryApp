@@ -5,9 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LibraryApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="400" Width="300" 
-        WindowStyle="None"
+        Title="MainWindow" Height="300" Width="300" 
         ResizeMode="CanMinimize" 
+        WindowStyle="None"
+        Style="{StaticResource {x:Type Window}}"
+        AllowsTransparency="True"
         MouseDown="MainWindow_OnMouseDown"
         WindowStartupLocation="CenterScreen">
         
@@ -26,10 +28,9 @@
         <Separator Grid.Row="1" Width="350"/>
         
         <StackPanel Grid.Row="2" VerticalAlignment="Center">
-            <Button Content="Bøker" Click="ButtonBase_OnClick"/>
-            <Button Content="Brukere" Click="ButtonUsers_OnClick"/>
-            <Button Content="Lånekort"/>
-            <Button Content="Avslutt" Click="ButtonQuit_OnClick"/>
+            <Button Content="Bøker" Command="{Binding BooksCommand}"/>
+            <Button Content="Brukere" Command="{Binding UsersCommand}"/>
+            <Button Content="Avslutt" Command="{Binding ExitCommand}"/>
         </StackPanel>
     </Grid>
 </Window>

@@ -7,6 +7,8 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterOwner"
         WindowStyle="None"
+        Style="{StaticResource {x:Type Window}}"
+        AllowsTransparency="True"
         ResizeMode="NoResize" 
         Title="AddUserWindow" Height="400" Width="400"
         BorderBrush="Black" BorderThickness="1">
@@ -28,7 +30,7 @@
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
         <Button Content="Legg til" Command="{Binding AddUserCommand}"/>
             <Button Content="Tøm felter" Command="{Binding EmptyFieldsCommand}"/>
-        <Button Content="Avbryt" Click="ButtonCloseWindow_OnClick"/>
+        <Button Content="Tilbake" Command="{Binding BackCommand}"/>
             </StackPanel>
         </Grid>
 </Window>

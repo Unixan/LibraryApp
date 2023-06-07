@@ -5,8 +5,8 @@ namespace LibraryApp.View
 {
     public partial class BookDetailsWindow : Window
     {
-        public Book Book { get; private set; }
-        public BookDetailsWindow(Window books, Book book)
+        public Book? Book { get; private set; }
+        public BookDetailsWindow(Window books, Book? book)
         {
             Book = book;
             Owner = books;
@@ -14,7 +14,7 @@ namespace LibraryApp.View
             PopulateDetails(book);
         }
 
-        private void PopulateDetails(Book book)
+        private void PopulateDetails(Book? book)
         {
             Title.Text = book.Title;
             Author.Text = book.Author;
@@ -23,7 +23,7 @@ namespace LibraryApp.View
             Status.Text = GetBookStatus(book);
         }
 
-        private string GetBookStatus(Book book)
+        private string GetBookStatus(Book? book)
         {
             return book.IsAvailable ? "Ledig" : "Lånt ut til: " + book.LoanedTo.FullName;
         }

@@ -31,9 +31,9 @@ public class AddBookWindowViewModel : ViewModelBase
             OnPropertyChanged();
         }
     }
-    private ObservableCollection<Book> _books;
+    private ObservableCollection<Book?> _books;
 
-    public ObservableCollection<Book> Books
+    public ObservableCollection<Book?> Books
     {
         get { return _books; }
         set
@@ -74,7 +74,7 @@ public class AddBookWindowViewModel : ViewModelBase
     }
     private readonly Window _window;
 
-    public AddBookWindowViewModel(Window window, ObservableCollection<Book> books)
+    public AddBookWindowViewModel(Window window, ObservableCollection<Book?> books)
     {
         _window = window;
        _books = books;
